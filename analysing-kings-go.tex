@@ -1,34 +1,41 @@
 \documentclass{beamer}
 
 \usepackage{minted}
+\usepackage{fontspec}
 
 \title{Analysing Kings with Go}
 \author[@jshholland]{Josh Holland \\ @jshholland}
-\date{OggCamp 2014}
+\date[Oggcamp14]{OggCamp 2014 \\ Oxford}
+
+\newminted{go}{linenos}
+
+\usetheme{Boadilla}
+\usecolortheme{seahorse}
+
+\setsansfont[StylisticSet=2]{Concourse T3}
+\setmonofont{Source Code Pro}
+
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{frametitle}{series=\bfseries}
 
 \begin{document}
 
 \frame{\titlepage}
 
-\begin{frame}
-\frametitle{What is Kings?}
+\frame{\tableofcontents}
+
+\section{The game of Kings}
+
+\begin{frame}{The rules of Kings}
+\begin{itemize}
+  \item 52-card deck
+  \item Aces low
+  \item Higher cards “beat” lower one
+\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Hello, Go}
+\section{A brief overview of Go}
 
-\begin{minted}{go}
-// You can edit this code!
-// Click here and start typing.
-package main
-
-import "fmt"
-
-func main() {
-    fmt.Println("Hello, world")
-}
-\end{minted}
-
-\end{frame}
+\section{Putting it all together}
 
 \end{document}
