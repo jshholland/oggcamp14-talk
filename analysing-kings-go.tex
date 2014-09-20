@@ -12,6 +12,7 @@
 
 \usetheme{Boadilla}
 \usecolortheme{seahorse}
+\usefonttheme{professionalfonts}
 
 \setsansfont[StylisticSet=2]{Concourse T3}
 \setmonofont{Source Code Pro}
@@ -88,6 +89,59 @@
 \end{frame}
 
 \section{A brief overview of Go}
+
+\begin{frame}
+\frametitle{History of the language}
+\begin{itemize}
+  \item Invented at Google by Robert Griesemer, Rob Pike and
+    Ken Thompson
+  \item Initial whiteboard ideas in 2007
+  \item Open source release in 2009
+  \item Go 1 released in 2012
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Hello, world}
+\begin{gocode}
+package main
+
+import "fmt"
+
+func main() {
+        fmt.Println("Hello, world!")
+}
+\end{gocode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{A more complex example of Go}
+\begin{onlyenv}<1>
+\begin{align*}
+\frac{\pi}{4} &= \sum_{k=0}^{\infty} \frac{(-1)^k}{2k + 1}
+\end{align*}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{gocode}
+func pi(n int) float64 {
+        ch := make(chan float64)
+        for k := 0; k <= n; k++ {
+                go term(ch, float64(k))
+        }
+        f := 0.0
+        for k := 0; k <= n; k++ {
+                f += <-ch
+        }
+        return f
+}
+
+func term(ch chan float64, k float64) {
+        ch <- 4 * math.Pow(-1, k) / (2*k + 1)
+}
+\end{gocode}
+\end{onlyenv}
+\end{frame}
+
 
 \section{Putting it all together}
 
