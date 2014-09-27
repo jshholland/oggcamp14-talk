@@ -162,4 +162,33 @@ Failure :(
 \end{minted}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Defining the Deck type}
+\begin{onlyenv}<1>
+\begin{gocode}
+// Deck represents a deck of cards, as a stack.
+type Deck struct {
+        data []Card
+}
+\end{gocode}
+\end{onlyenv}
+\begin{onlyenv}<2>
+\begin{gocode}
+func NewDeck() *Deck {
+        d := make([]Card, NumCards)
+        d[0] = Card{Ace, Clubs}
+        for i := 1; i < NumCards; i++ {
+                j := rand.Intn(i + 1)
+                d[i] = d[j]
+                r := Rank(i%NumRanks + 1)
+                s := Suit(i / NumRanks)
+                d[j] = Card{r, s}
+        }
+        return &Deck{d}
+}
+
+\end{gocode}
+\end{onlyenv}
+\end{frame}
+
 \end{document}
